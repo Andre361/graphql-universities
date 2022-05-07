@@ -17,7 +17,7 @@ async def update_database():
             name=x["name"],
             web_pages=x["web_pages"],
             alpha_two_code=x["alpha_two_code"],
-            state_province=x["state_province"],
+            state_province=x["state-province"],
             domains=x["domains"],
         )
 

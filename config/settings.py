@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'background_task',
     'api',
+
 ]
 
 MIDDLEWARE = [
