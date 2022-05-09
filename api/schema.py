@@ -16,6 +16,9 @@ class Query(graphene.ObjectType):
     filter_by_country = graphene.List(
         UniversityType, country=graphene.String(required=True)
     )
+    filter_by_alpha_two_code = graphene.List(UniversityType,alpha_two_code=graphene.String(required=True))
+    filter_by_domain = graphene.List(UniversityType,domain=graphene.String(required=True))
+    filter_by_country_and_name = graphene.List(UniversityType,country=graphene.String(required=True),name=graphene.String(required=True))
     filter = graphene.List(
         UniversityType, name=graphene.String(),country=graphene.String(),alpha_two_code=graphene.String(),web_pages=graphene.List(graphene.String),domains=graphene.List(graphene.String),
     )
@@ -29,11 +32,24 @@ class Query(graphene.ObjectType):
     def resolve_filter_by_country(parent, info, country):
         return University.objects.filter(country__icontains=country)
 
+    def resolve_filter_by_country_and_name(parent,info,country,name):
+        return University.objects.filter(name__icontains=name).filter(country__icontains=country)
+
+    def resolve_filter_by_alpha_two_code(parent,info,alpha_two_code):
+        return University.objects.filter(alpha_two_code__icontains=alpha_two_code)
+
+    def resolve_filter_by_domain(parent,info,domain):
+        return University.objects.filter(domains__icontains=domain)
+
+    def resolve_filter_by_alpha_two_code_and_name(parent,info,alpha_two_code,name):
+        University.objects.filter(name__icontains=name).filter(alpha_two_code__icontains=alpha_two_code)
+
     def resolve_filter(parent,info,**kwargs):
+        # alternative method of resolving based on arguments provided
         name = kwargs.get('name')
         country= kwargs.get('country')
         if name and country:
-            return University.objects.filter(name__icontains=name,country__icontains=country)
+            return University.objects.filter(name__icontains=name).filter(country__icontains=country)
 
 
 

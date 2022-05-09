@@ -9,11 +9,11 @@ r.raise_for_status()
 data = r.json()
 
 @background(schedule=5)
-def update_database(data):
+async def update_database():
     
 
     for x in data:
-        University.objects.create(
+        await University.objects.create(
             country=x["country"],
             
             name=x["name"],

@@ -22,7 +22,7 @@ class University(models.Model):
     alpha_two_code = models.CharField(max_length=2)
     web_pages = ArrayField(models.TextField())
     domains = ArrayField(models.TextField())
-    state_province = models.TextField(blank=True)
+    state_province = models.TextField(null=True)
     
     def __str__(self):
         return self.name
