@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0002_alter_university_state_province'),
+        ("api", "0002_alter_university_state_province"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='university',
-            options={'verbose_name_plural': 'Universities'},
+            name="university",
+            options={"verbose_name_plural": "Universities"},
         ),
         migrations.AlterField(
-            model_name='university',
-            name='state_province',
+            model_name="university",
+            name="state_province",
             field=models.TextField(null=True),
         ),
     ]

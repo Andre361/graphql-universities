@@ -8,20 +8,37 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='University',
+            name="University",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField()),
-                ('country', models.CharField(max_length=56)),
-                ('alpha_two_code', models.CharField(max_length=2)),
-                ('web_pages', django.contrib.postgres.fields.ArrayField(base_field=models.TextField(), size=None)),
-                ('domains', django.contrib.postgres.fields.ArrayField(base_field=models.TextField(), size=None)),
-                ('state_province', models.TextField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField()),
+                ("country", models.CharField(max_length=56)),
+                ("alpha_two_code", models.CharField(max_length=2)),
+                (
+                    "web_pages",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.TextField(), size=None
+                    ),
+                ),
+                (
+                    "domains",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.TextField(), size=None
+                    ),
+                ),
+                ("state_province", models.TextField()),
             ],
         ),
     ]
