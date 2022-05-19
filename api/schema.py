@@ -3,12 +3,19 @@ from graphene_django import DjangoObjectType
 from graphql import GraphQLError
 from .models import University
 
+
 class UniversityType(DjangoObjectType):
     class Meta:
         model = University
-        fields = ("name", "country", "alpha_two_code", "domains", "web_pages","state_province")
+        fields = (
+            "name",
+            "country",
+            "alpha_two_code",
+            "domains",
+            "web_pages",
+            "state_province",
+        )
 
-    
 
 class Query(graphene.ObjectType):
     all_universities = graphene.List(

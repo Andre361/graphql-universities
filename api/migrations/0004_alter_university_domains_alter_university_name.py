@@ -7,18 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('api', '0003_alter_university_options_and_more'),
+        ("api", "0003_alter_university_options_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='university',
-            name='domains',
-            field=django.contrib.postgres.fields.ArrayField(base_field=models.TextField(unique=True), size=None),
+            model_name="university",
+            name="domains",
+            field=django.contrib.postgres.fields.ArrayField(
+                base_field=models.TextField(unique=True), size=None
+            ),
         ),
         migrations.AlterField(
-            model_name='university',
-            name='name',
+            model_name="university",
+            name="name",
             field=models.CharField(max_length=255, unique=True),
         ),
     ]
