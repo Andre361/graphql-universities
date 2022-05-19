@@ -3,8 +3,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class University(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    # add index and pk
+    name = models.CharField(max_length=255, unique=True, primary_key=True)
     country = models.CharField(max_length=56)
     alpha_two_code = models.CharField(max_length=2)
     web_pages = ArrayField(models.TextField())
@@ -16,3 +15,4 @@ class University(models.Model):
 
     class Meta:
         verbose_name_plural = "Universities"
+
