@@ -12,8 +12,6 @@ data = r.json()
 # @background(schedule=5)
 def update_database():
     objects = []
-    objects_to_update = [i for i in University.objects.all()]
-    # objects_to_create = [i for i in ]
     for x in data:
         objects.append(University(
             country=x["country"],
@@ -23,6 +21,6 @@ def update_database():
             state_province=x["state-province"],
             domains=x["domains"],
         ))
-    University.objects.bulk_create(objects,ignore_conflicts=True)
     
+    University.objects.bulk_create(objects,ignore_conflicts=True)
 update_database()
