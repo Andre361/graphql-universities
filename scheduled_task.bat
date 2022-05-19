@@ -1,0 +1,1 @@
+C:\Users\R\Documents\Web\graphuniv\env\Scripts\python.exe manage.py update
