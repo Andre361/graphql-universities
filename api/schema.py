@@ -2,22 +2,12 @@ import graphene
 from graphene_django import DjangoObjectType
 from graphql import GraphQLError
 from .models import University
-from .views import fetch
 
-# database = fetch()
 class UniversityType(DjangoObjectType):
     class Meta:
         model = University
-        fields = ("name", "country", "alpha_two_code", "domains", "web_pages")
+        fields = ("name", "country", "alpha_two_code", "domains", "web_pages","state_province")
 
-
-
-class UniversityScheme(graphene.ObjectType):
-    name = graphene.String()
-    country = graphene.String()
-    alpha_two_code = graphene.String()
-    domains=graphene.List(graphene.String)
-    web_pages = graphene.List(graphene.String)
     
 
 class Query(graphene.ObjectType):
