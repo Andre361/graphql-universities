@@ -1,3 +1,4 @@
+from operator import itemgetter
 import graphene
 from graphene_django import DjangoObjectType
 from graphql import GraphQLError
@@ -28,11 +29,12 @@ class Query(graphene.ObjectType):
 
     def resolve_all_universities(parent, info, **search):
         try:
-            
-            name = search.get("name")
-            country = search.get("country")
-            alpha_two_code = search.get("alpha_two_code")
-            domain = search.get("domain")
+            pluck = lambda dict, *args: (dict.get(arg) for arg in args)
+            name,country,alpha_two_code,domain=pluck(search,"name","country","alpha_two_code","domain")
+            # name = search.get("name")
+            # country = search.get("country")
+            # alpha_two_code = search.get("alpha_two_code")
+            # domain = search.get("domain")
             if country and name:
                 return University.objects.filter(name__icontains=name).filter(
                     country__icontains=country
