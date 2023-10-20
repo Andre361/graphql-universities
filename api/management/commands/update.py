@@ -13,18 +13,14 @@ def fetch():
 
 def update_database():
     data = fetch()
-    objects = []
-    for x in data:
-        objects.append(
-            University(
+    objects = [University(
                 country=x["country"],
                 name=x["name"],
                 web_pages=x["web_pages"],
                 alpha_two_code=x["alpha_two_code"],
                 state_province=x["state-province"],
                 domains=x["domains"],
-            )
-        )
+            ) for x in data]
 
     University.objects.bulk_create(objects, ignore_conflicts=True)
 
