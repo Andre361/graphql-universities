@@ -28,6 +28,7 @@ class Query(graphene.ObjectType):
 
     def resolve_all_universities(parent, info, **search):
         try:
+            
             name = search.get("name")
             country = search.get("country")
             alpha_two_code = search.get("alpha_two_code")
